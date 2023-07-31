@@ -1,1 +1,1 @@
-# divine-pride-api-wrapper
+# Divine Pride api wrapper
