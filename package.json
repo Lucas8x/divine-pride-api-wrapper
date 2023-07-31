@@ -1,6 +1,6 @@
 {
   "name": "divine-pride-api-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "src/index.ts",
   "scripts": {
@@ -22,5 +22,13 @@
     "@types/jest": "^29.5.3",
     "jest": "^29.6.2",
     "ts-jest": "^29.1.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lucas8x/divine-pride-api-wrapper"
+  },
+  "bugs": {
+    "url": "https://github.com/Lucas8x/divine-pride-api-wrapper/issues"
+  },
+  "homepage": "https://github.com/Lucas8x/divine-pride-api-wrapper#readme"
 }
