@@ -1,14 +1,10 @@
 import axios from 'axios';
 
 class DivinePride {
-  private apiKey: string;
-  server?: string | ServerTypes;
-  acceptLanguage?: string | HeaderLanguage;
-
   constructor(
-    apiKey: string,
-    server: ServerTypes = 'iRO',
-    acceptLanguage: HeaderLanguage = 'en-US'
+    private apiKey: string,
+    private server: ServerTypes | string = 'iRO',
+    private acceptLanguage: HeaderLanguage | string = 'en-US'
   ) {
     if (!apiKey)
       throw new Error(
@@ -17,6 +13,43 @@ class DivinePride {
     this.apiKey = apiKey;
     this.server = server;
     this.acceptLanguage = acceptLanguage;
+  }
+
+  /**
+   * Return string of the current server setting
+   * @return {*}  {string}
+   * @memberof DivinePride
+   */
+  public getServer(): string {
+    return this.server;
+  }
+
+  /**
+   * Change the current server setting.
+   * Seems to take precedence over language setting.
+   * @param {(ServerTypes | string)} server
+   * @memberof DivinePride
+   */
+  public setServer(server: ServerTypes | string) {
+    this.server = server;
+  }
+
+  /**
+   * Return string of the current language setting
+   * @return {*}  {string}
+   * @memberof DivinePride
+   */
+  public getAcceptLanguage(): string {
+    return this.acceptLanguage;
+  }
+
+  /**
+   * Change the current language setting
+   * @param {(string | HeaderLanguage)} language
+   * @memberof DivinePride
+   */
+  public setLanguage(language: HeaderLanguage | string) {
+    this.acceptLanguage = language;
   }
 
   private async request(endpoint: string) {
@@ -38,50 +71,109 @@ class DivinePride {
     }
   }
 
+  /**
+   * Get achievement information by id.
+   * @param {number} id the achievement id
+   * @return {*}  {Promise<GetAchievementResponse>}
+   * @memberof DivinePride
+   */
   async getAchievement(id: number): Promise<GetAchievementResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Achievement/${id}`);
   }
 
+  /**
+   * Get buff information by id.
+   * @param {number} id the buff id
+   * @return {*}  {Promise<GetBuffResponse>}
+   * @memberof DivinePride
+   */
   async getBuff(id: number): Promise<GetBuffResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Buff/${id}`);
   }
 
+  /**
+   * List of experience for different types.
+   * @return {*}  {Promise<GetExperience>}
+   * @memberof DivinePride
+   */
   async getExperience(): Promise<GetExperience> {
     return await this.request(`Experience`);
   }
 
+  /**
+   * Get a specific item by id.
+   * @param {number} id item id
+   * @return {*}  {Promise<GetItem>}
+   * @memberof DivinePride
+   */
   async getItem(id: number): Promise<GetItem> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Item/${id}`);
   }
 
+  /**
+   * Get map information by string id  ex: prt_fild08
+   * @param {string} id map id
+   * @return {*}  {Promise<GetMap>}
+   * @memberof DivinePride
+   */
   async getMap(id: string): Promise<GetMap> {
     if (typeof id !== 'string') throw new Error('ID must be a string');
     return await this.request(`Map/${id}`);
   }
 
+  /**
+   * Get monster information by id.
+   * @param {number} id monster id
+   * @return {*}  {Promise<GetMonster>}
+   * @memberof DivinePride
+   */
   async getMonster(id: number): Promise<GetMonster> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Monster/${id}`);
   }
 
+  /**
+   * List of monster id and monster name
+   * @param {number} id
+   * @return {*}  {Promise<GetNpcIdentity>}
+   * @memberof DivinePride
+   */
   async getNpcIdentity(id: number): Promise<GetNpcIdentity> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`NpcIdentity/${id}`);
   }
 
+  /**
+   * Get quest information by id.
+   * @param {number} id quest id
+   * @return {*}  {Promise<GetQuest>}
+   * @memberof DivinePride
+   */
   async getQuest(id: number): Promise<GetQuest> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Quest/${id}`);
   }
 
+  /**
+   * Get skill information by id.
+   * @param {number} id skill id
+   * @return {*}  {Promise<GetSkill>}
+   * @memberof DivinePride
+   */
   async getSkill(id: number): Promise<GetSkill> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Skill/${id}`);
   }
 
+  /**
+   * Get title information by id.
+   * @param {number} id
+   * @return {*}  {Promise<GetTitle>}
+   * @memberof DivinePride
+   */
   async getTitle(id: number): Promise<GetTitle> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Title/${id}`);
