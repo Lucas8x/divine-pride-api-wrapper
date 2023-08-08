@@ -227,3 +227,29 @@ export interface GetTitleResponse {
     minor: any;
   };
 }
+
+declare class DivinePride {
+  private apiKey;
+  private server;
+  private acceptLanguage;
+  constructor(
+    apiKey: string,
+    server?: ServerTypes | string,
+    acceptLanguage?: HeaderLanguage | string
+  );
+  getServer(): string;
+  setServer(server: ServerTypes | string): void;
+  getAcceptLanguage(): string;
+  setLanguage(language: HeaderLanguage | string): void;
+  private request;
+  getAchievement(id: number): Promise<GetAchievementResponse>;
+  getBuff(id: number): Promise<GetBuffResponse>;
+  getExperience(): Promise<GetExperienceResponse>;
+  getItem(id: number): Promise<GetItemResponse>;
+  getMap(id: string): Promise<GetMapResponse>;
+  getMonster(id: number): Promise<GetMonsterResponse>;
+  getNpcIdentity(id: number): Promise<GetNpcIdentityResponse>;
+  getQuest(id: number): Promise<GetQuestResponse>;
+  getSkill(id: number): Promise<GetSkillResponse>;
+  getTitle(id: number): Promise<GetTitleResponse>;
+}
