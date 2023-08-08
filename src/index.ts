@@ -1,4 +1,18 @@
 import axios from 'axios';
+import type {
+  GetAchievementResponse,
+  GetBuffResponse,
+  GetExperienceResponse,
+  GetItemResponse,
+  GetMapResponse,
+  GetMonsterResponse,
+  GetNpcIdentityResponse,
+  GetQuestResponse,
+  GetSkillResponse,
+  GetTitleResponse,
+  HeaderLanguage,
+  ServerTypes,
+} from './types';
 
 class DivinePride {
   constructor(
@@ -98,7 +112,7 @@ class DivinePride {
    * @return {*}  {Promise<GetExperience>}
    * @memberof DivinePride
    */
-  async getExperience(): Promise<GetExperience> {
+  async getExperience(): Promise<GetExperienceResponse> {
     return await this.request(`Experience`);
   }
 
@@ -108,7 +122,7 @@ class DivinePride {
    * @return {*}  {Promise<GetItem>}
    * @memberof DivinePride
    */
-  async getItem(id: number): Promise<GetItem> {
+  async getItem(id: number): Promise<GetItemResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Item/${id}`);
   }
@@ -119,7 +133,7 @@ class DivinePride {
    * @return {*}  {Promise<GetMap>}
    * @memberof DivinePride
    */
-  async getMap(id: string): Promise<GetMap> {
+  async getMap(id: string): Promise<GetMapResponse> {
     if (typeof id !== 'string') throw new Error('ID must be a string');
     return await this.request(`Map/${id}`);
   }
@@ -130,9 +144,9 @@ class DivinePride {
    * @return {*}  {Promise<GetMonster>}
    * @memberof DivinePride
    */
-  async getMonster(id: number): Promise<GetMonster> {
+  getMonster(id: number): Promise<GetMonsterResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
-    return await this.request(`Monster/${id}`);
+    return this.request(`Monster/${id}`);
   }
 
   /**
@@ -141,7 +155,7 @@ class DivinePride {
    * @return {*}  {Promise<GetNpcIdentity>}
    * @memberof DivinePride
    */
-  async getNpcIdentity(id: number): Promise<GetNpcIdentity> {
+  async getNpcIdentity(id: number): Promise<GetNpcIdentityResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`NpcIdentity/${id}`);
   }
@@ -152,7 +166,7 @@ class DivinePride {
    * @return {*}  {Promise<GetQuest>}
    * @memberof DivinePride
    */
-  async getQuest(id: number): Promise<GetQuest> {
+  async getQuest(id: number): Promise<GetQuestResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Quest/${id}`);
   }
@@ -163,7 +177,7 @@ class DivinePride {
    * @return {*}  {Promise<GetSkill>}
    * @memberof DivinePride
    */
-  async getSkill(id: number): Promise<GetSkill> {
+  async getSkill(id: number): Promise<GetSkillResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Skill/${id}`);
   }
@@ -174,7 +188,7 @@ class DivinePride {
    * @return {*}  {Promise<GetTitle>}
    * @memberof DivinePride
    */
-  async getTitle(id: number): Promise<GetTitle> {
+  async getTitle(id: number): Promise<GetTitleResponse> {
     if (isNaN(id)) throw new Error('ID must be a number');
     return await this.request(`Title/${id}`);
   }

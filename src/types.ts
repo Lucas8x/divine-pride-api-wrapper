@@ -1,4 +1,4 @@
-type ServerTypes =
+export type ServerTypes =
   | 'aRO'
   | 'bRO'
   | 'fRO'
@@ -15,9 +15,9 @@ type ServerTypes =
   | 'cRO'
   | 'iROC';
 
-type HeaderLanguage = 'en-US' | 'pt-BR' | 'ko-KR';
+export type HeaderLanguage = 'en-US' | 'pt-BR' | 'ko-KR';
 
-interface GetAchievementResponse {
+export interface GetAchievementResponse {
   id: number;
   title: string;
   summary: string;
@@ -35,7 +35,7 @@ interface GetAchievementResponse {
   minor: number;
 }
 
-interface GetBuffResponse {
+export interface GetBuffResponse {
   id: number;
   description: string;
   image: string;
@@ -49,12 +49,12 @@ interface Experience {
   [key: string]: number;
 }
 
-interface GetExperience {
+export interface GetExperienceResponse {
   base_normal: Experience;
   base_rebirth: Experience;
 }
 
-interface GetItem {
+export interface GetItemResponse {
   classNum: number;
   sets: any[];
   soldBy: any[];
@@ -89,7 +89,7 @@ interface GetItem {
   location: string;
 }
 
-interface GetMap {
+export interface GetMapResponse {
   mapname: string;
   name: string;
   mp3: string;
@@ -165,7 +165,7 @@ interface Skill {
   conditionValue: any;
 }
 
-interface GetMonster {
+export interface GetMonsterResponse {
   id: number;
   name: string;
   stats: Stats;
@@ -178,11 +178,11 @@ interface GetMonster {
   skill: Skill[];
 }
 
-interface GetNpcIdentity {
+export interface GetNpcIdentityResponse {
   [x: string]: number;
 }
 
-interface GetQuest {
+export interface GetQuestResponse {
   id: number;
   title: string;
   image: string;
@@ -196,7 +196,7 @@ interface GetQuest {
   qitem_job: number;
 }
 
-interface GetSkill {
+export interface GetSkillResponse {
   id: number;
   globalization: Array<{
     name: string;
@@ -206,7 +206,7 @@ interface GetSkill {
   }>;
 }
 
-interface GetTitle {
+export interface GetTitleResponse {
   id: number;
   title: string;
   achievement: {
