@@ -17,8 +17,8 @@ import type {
 class DivinePride {
   constructor(
     private apiKey: string,
-    private server: ServerTypes | string = 'iRO',
-    private acceptLanguage: HeaderLanguage | string = 'en-US'
+    private server: ServerTypes = 'iRO',
+    private acceptLanguage: HeaderLanguage = 'en-US'
   ) {
     if (!apiKey)
       throw new Error(
@@ -44,7 +44,7 @@ class DivinePride {
    * @param {(ServerTypes | string)} server
    * @memberof DivinePride
    */
-  public setServer(server: ServerTypes | string) {
+  public setServer(server: ServerTypes) {
     this.server = server;
   }
 
@@ -62,7 +62,7 @@ class DivinePride {
    * @param {(string | HeaderLanguage)} language
    * @memberof DivinePride
    */
-  public setLanguage(language: HeaderLanguage | string) {
+  public setLanguage(language: HeaderLanguage) {
     this.acceptLanguage = language;
   }
 
