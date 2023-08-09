@@ -210,3 +210,12 @@ export type {
   HeaderLanguage,
   ServerTypes,
 };
+export type {
+  Attack,
+  Drop,
+  Experience,
+  PropertyTable,
+  Skill,
+  Spawn,
+  Stats,
+} from './types';
