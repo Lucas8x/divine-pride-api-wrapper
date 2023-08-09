@@ -196,3 +196,17 @@ class DivinePride {
 
 export { DivinePride };
 export default DivinePride;
+export type {
+  GetAchievementResponse,
+  GetBuffResponse,
+  GetExperienceResponse,
+  GetItemResponse,
+  GetMapResponse,
+  GetMonsterResponse,
+  GetNpcIdentityResponse,
+  GetQuestResponse,
+  GetSkillResponse,
+  GetTitleResponse,
+  HeaderLanguage,
+  ServerTypes,
+};

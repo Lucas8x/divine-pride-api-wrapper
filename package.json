@@ -1,8 +1,10 @@
 {
   "name": "divine-pride-api-wrapper",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Unofficial Divine Pride API wrapper",
   "main": "build/index.js",
+  "type": "module",
+  "types": "build/index.d.ts",
   "scripts": {
     "prepack": "npm run build",
     "build": "npx tsc",
