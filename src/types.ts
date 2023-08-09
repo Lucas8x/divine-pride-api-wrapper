@@ -45,7 +45,9 @@ export interface GetBuffResponse {
   debuff: boolean;
 }
 
-interface Experience {
+// ------------------------------------
+
+export interface Experience {
   [key: string]: number;
 }
 
@@ -53,6 +55,8 @@ export interface GetExperienceResponse {
   base_normal: Experience;
   base_rebirth: Experience;
 }
+
+// ------------------------------------
 
 export interface GetItemResponse {
   classNum: number;
@@ -106,7 +110,7 @@ export interface GetMapResponse {
 
 // ------------------------------------
 
-interface Stats {
+export interface Stats {
   attackRange: number;
   level: number;
   health: number;
@@ -136,24 +140,24 @@ interface Stats {
   _class: number;
 }
 
-interface Attack {
+export interface Attack {
   minimum: number;
   maximum: number;
 }
 
-interface Drop {
+export interface Drop {
   itemId: number;
   chance: number;
   stealProtected: boolean;
 }
 
-interface Spawn {
+export interface Spawn {
   mapname: string;
   amount: number;
   respawnTime: number;
 }
 
-interface Skill {
+export interface Skill {
   skillId: number;
   status: string;
   level: number;
@@ -165,18 +169,29 @@ interface Skill {
   conditionValue: any;
 }
 
+export interface PropertyTable {
+  [elementIndex: string]: number;
+}
+
 export interface GetMonsterResponse {
   id: number;
+  dbname: string;
   name: string;
   stats: Stats;
+  spawnSet: any[];
   slaves: any[];
+  metamorphosis: any[];
   sounds: string[];
   questObjective: number[];
   drops: Drop[];
+  mapDrops: any[];
   mvpdrops: any[];
   spawn: Spawn[];
   skill: Skill[];
+  propertyTable: PropertyTable;
 }
+
+// ------------------------------------
 
 export interface GetNpcIdentityResponse {
   [x: string]: number;
@@ -227,6 +242,8 @@ export interface GetTitleResponse {
     minor: any;
   };
 }
+
+// ------------------------------------
 
 declare class DivinePride {
   private apiKey;
