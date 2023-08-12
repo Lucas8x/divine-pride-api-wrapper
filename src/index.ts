@@ -1,4 +1,5 @@
 import axios from 'axios';
+import packageJson from '../package.json';
 import type {
   GetAchievementResponse,
   GetBuffResponse,
@@ -73,6 +74,7 @@ class DivinePride {
         url: `https://www.divine-pride.net/api/database/${endpoint}`,
         headers: {
           'Accept-Language': this.acceptLanguage,
+          'User-Agent': `${packageJson.name}/${packageJson.version}`,
         },
         params: {
           apiKey: this.apiKey,
@@ -196,6 +198,16 @@ class DivinePride {
 
 export { DivinePride };
 export default DivinePride;
+export { HeaderLanguages, Servers } from './constants';
+export type {
+  Attack,
+  Drop,
+  Experience,
+  PropertyTable,
+  Skill,
+  Spawn,
+  Stats,
+} from './types';
 export type {
   GetAchievementResponse,
   GetBuffResponse,
@@ -210,13 +222,3 @@ export type {
   HeaderLanguage,
   ServerTypes,
 };
-export type {
-  Attack,
-  Drop,
-  Experience,
-  PropertyTable,
-  Skill,
-  Spawn,
-  Stats,
-} from './types';
-export { Servers, HeaderLanguages } from './constants';
