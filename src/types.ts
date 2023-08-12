@@ -15,7 +15,14 @@ export type ServerTypes =
   | 'cRO'
   | 'iROC';
 
-export type HeaderLanguage = 'en-US' | 'pt-BR' | 'ko-KR';
+export type HeaderLanguage =
+  | 'en-US'
+  | 'id-ID'
+  | 'ja-JP'
+  | 'ko-KR'
+  | 'pt-BR'
+  | 'ru-RU'
+  | 'th-TH';
 
 export interface GetAchievementResponse {
   id: number;
