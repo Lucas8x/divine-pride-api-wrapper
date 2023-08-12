@@ -122,7 +122,7 @@ export interface Stats {
   level: number;
   health: number;
   str: number;
-  _int: number;
+  int: number;
   vit: number;
   dex: number;
   agi: number;
@@ -144,7 +144,7 @@ export interface Stats {
   flee: number;
   ai: string;
   mvp: number;
-  _class: number;
+  class: number;
 }
 
 export interface Attack {
