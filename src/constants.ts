@@ -1,21 +1,23 @@
 import type { ServerTypes, HeaderLanguage } from './types';
 
 export const Servers: ServerTypes[] = [
-  'aRO',
   'bRO',
-  'fRO',
+  'cRO',
+  'dpRO',
+  'GGH',
   'idRO',
   'iRO',
   'jRO',
   'kROM',
+  'kROS',
   'kROZ',
   'kROZS',
-  'GGH',
-  'ruRO',
+  'ropEU',
+  'ropRU',
+  'thROC',
   'thROG',
   'twRO',
-  'cRO',
-  'iROC',
+  'vnRO',
 ];
 
 export const HeaderLanguages: HeaderLanguage[] = [

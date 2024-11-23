@@ -1,4 +1,3 @@
-import axios from 'axios';
 import packageJson from '../package.json';
 import type {
   GetAchievementResponse,
@@ -15,11 +14,20 @@ import type {
   ServerTypes,
 } from './types';
 
+/**
+ * Main class for interacting with DivinePride API.
+ * @class DivinePride
+ * @param {string} apiKey API key from DivinePride
+ * @param {ServerTypes} [server='iRO'] Server to query
+ * @param {HeaderLanguage} [acceptLanguage='en-US'] Language to use for querying
+ * @param {RequestInit} [fetchOptions] Options to pass to the fetch API
+ */
 class DivinePride {
   constructor(
     private apiKey: string,
     private server: ServerTypes = 'iRO',
-    private acceptLanguage: HeaderLanguage = 'en-US'
+    private acceptLanguage: HeaderLanguage = 'en-US',
+    private fetchOptions?: RequestInit
   ) {
     if (!apiKey)
       throw new Error(
@@ -69,18 +77,29 @@ class DivinePride {
 
   private async request(endpoint: string) {
     try {
-      const { data } = await axios({
-        method: 'GET',
-        url: `https://www.divine-pride.net/api/database/${endpoint}`,
-        headers: {
-          'Accept-Language': this.acceptLanguage,
-          'User-Agent': `${packageJson.name}/${packageJson.version}`,
-        },
-        params: {
-          apiKey: this.apiKey,
-          server: this.server,
-        },
+      const params = new URLSearchParams({
+        apiKey: this.apiKey,
+        server: this.server,
       });
+
+      const response = await fetch(
+        `https://www.divine-pride.net/api/database/${endpoint}?${params}`,
+        {
+          method: 'GET',
+          headers: {
+            'Accept-Language': this.acceptLanguage,
+            'User-Agent': `${packageJson.name}/${packageJson.version}`,
+          },
+          ...this.fetchOptions,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
       return data;
     } catch (error) {
       throw error;

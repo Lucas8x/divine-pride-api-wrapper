@@ -1,19 +1,21 @@
 export type ServerTypes =
-  | 'aRO'
   | 'bRO'
-  | 'fRO'
+  | 'cRO'
+  | 'dpRO'
+  | 'GGH'
   | 'idRO'
   | 'iRO'
   | 'jRO'
   | 'kROM'
+  | 'kROS'
   | 'kROZ'
   | 'kROZS'
-  | 'GGH'
-  | 'ruRO'
+  | 'ropEU'
+  | 'ropRU'
+  | 'thROC'
   | 'thROG'
   | 'twRO'
-  | 'cRO'
-  | 'iROC';
+  | 'vnRO';
 
 export type HeaderLanguage =
   | 'en-US'
@@ -256,6 +258,7 @@ declare class DivinePride {
   private apiKey;
   private server;
   private acceptLanguage;
+  private fetchOptions;
   constructor(
     apiKey: string,
     server?: ServerTypes | string,

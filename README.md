@@ -21,7 +21,10 @@ The key can be obtained on account page: [Account](https://www.divine-pride.net/
 ```javascript
 import DivinePride from 'divine-pride-api-wrapper';
 
-const api = new DivinePride('YOUR_DIVINE_PRIDE_API_KEY');
+const api = new DivinePride('YOUR_DIVINE_PRIDE_API_KEY', 'YOUR_SERVER');
+
+// example
+const api = new DivinePride('a1b2c3d4e5f6', 'bRO');
 ```
 
 ## Methods
@@ -37,7 +40,7 @@ api.setServer('bRO')
 
 ```text
 Servers
-aRO, bRO, fRO, idRO, iRO, jRO, kROM, kROZ, kROZS, GGH, ruRO, thROG, twRO, cRO, iROC
+bRO, cRO, dpRO, GGH, idRO, iRO, jRO, kROM, kROS, kROZ, kROZS, ropEU, ropRU, thROC, thROG, twRO, vnRO
 ```
 
 <!-- ### .setLanguage(language)
@@ -104,3 +107,7 @@ api.getSkill(29)
 ```javascript
 api.getTitle(1022)
 ```
+
+## License
+
+This project is under [MIT](./LICENSE) license.
