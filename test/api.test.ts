@@ -1,4 +1,5 @@
 import { DivinePride } from '../src';
+import { MissingApiKeyError } from '../src/errors';
 
 describe('instantiation', () => {
   it('should default export to be a function', () => {
@@ -6,8 +7,6 @@ describe('instantiation', () => {
   });
 
   it('invalid api key should fail instantiation', () => {
-    expect(() => new DivinePride('')).toThrow(
-      'Please provide DivinePride API key. You can get one here: https://www.divine-pride.net/account'
-    );
+    expect(() => new DivinePride('')).toThrow(MissingApiKeyError);
   });
 });

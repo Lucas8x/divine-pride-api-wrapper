@@ -1,4 +1,4 @@
-import * as cheerio from 'cheerio';
+import { load } from 'cheerio';
 
 async function getHomepageHTML() {
   const response = await fetch('https://www.divine-pride.net');
@@ -10,7 +10,7 @@ async function getHomepageHTML() {
 
   const html = await response.text();
 
-  return cheerio.load(html, null, false);
+  return load(html, null, false);
 }
 
 async function extractServersFromPage() {

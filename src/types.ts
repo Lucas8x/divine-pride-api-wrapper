@@ -1,30 +1,4 @@
-export type ServerTypes =
-  | 'bRO'
-  | 'cRO'
-  | 'dpRO'
-  | 'GGH'
-  | 'idRO'
-  | 'iRO'
-  | 'jRO'
-  | 'kROM'
-  | 'kROS'
-  | 'kROZ'
-  | 'kROZS'
-  | 'ropEU'
-  | 'ropRU'
-  | 'thROC'
-  | 'thROG'
-  | 'twRO'
-  | 'vnRO';
-
-export type HeaderLanguage =
-  | 'en-US'
-  | 'id-ID'
-  | 'ja-JP'
-  | 'ko-KR'
-  | 'pt-BR'
-  | 'ru-RU'
-  | 'th-TH';
+import type { HeaderLanguagesTypes, ServersTypes } from './constants';
 
 export interface GetAchievementResponse {
   id: number;
@@ -261,13 +235,13 @@ declare class DivinePride {
   private fetchOptions;
   constructor(
     apiKey: string,
-    server?: ServerTypes | string,
-    acceptLanguage?: HeaderLanguage | string
+    server?: ServersTypes | string,
+    acceptLanguage?: HeaderLanguagesTypes | string
   );
   getServer(): string;
-  setServer(server: ServerTypes | string): void;
+  setServer(server: ServersTypes | string): void;
   getAcceptLanguage(): string;
-  setLanguage(language: HeaderLanguage | string): void;
+  setLanguage(language: HeaderLanguagesTypes | string): void;
   private request;
   getAchievement(id: number): Promise<GetAchievementResponse>;
   getBuff(id: number): Promise<GetBuffResponse>;

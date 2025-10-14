@@ -1,6 +1,4 @@
-import type { ServerTypes, HeaderLanguage } from './types';
-
-export const Servers: ServerTypes[] = [
+export const Servers = [
   'bRO',
   'cRO',
   'dpRO',
@@ -12,15 +10,25 @@ export const Servers: ServerTypes[] = [
   'kROS',
   'kROZ',
   'kROZS',
+  'LATAM',
   'ropEU',
   'ropRU',
   'thROC',
   'thROG',
   'twRO',
+  'twROZ',
   'vnRO',
-];
+] as const;
 
-export const HeaderLanguages: HeaderLanguage[] = [
+export type ServersTypes = (typeof Servers)[number];
+
+export const ServersMap = Object.fromEntries(
+  Servers.map((c) => [c, c])
+) as Record<ServersTypes, ServersTypes>;
+
+// ------------------------------------
+
+export const HeaderLanguages = [
   'en-US',
   'id-ID',
   'ja-JP',
@@ -28,4 +36,10 @@ export const HeaderLanguages: HeaderLanguage[] = [
   'pt-BR',
   'ru-RU',
   'th-TH',
-];
+] as const;
+
+export type HeaderLanguagesTypes = (typeof HeaderLanguages)[number];
+
+export const HeaderLanguagesMap = Object.fromEntries(
+  HeaderLanguages.map((c) => [c, c])
+) as Record<HeaderLanguagesTypes, HeaderLanguagesTypes>;
